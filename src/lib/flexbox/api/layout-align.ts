@@ -142,8 +142,6 @@ export class LayoutAlignDirective extends BaseFxDirective implements OnInit, OnC
     let css = {}, [main_axis, cross_axis] = align.split(' '); // tslint:disable-line:variable-name
 
     css['justify-content'] = 'flex-start';  // default main axis
-    css['align-items'] = 'stretch';         // default cross axis
-    css['align-content'] = 'stretch';       // default cross axis
 
     // Main axis
     switch (main_axis) {
@@ -157,12 +155,22 @@ export class LayoutAlignDirective extends BaseFxDirective implements OnInit, OnC
         css['justify-content'] = 'space-between';
         break;
       case 'end':
+      case 'flex-end':
         css['justify-content'] = 'flex-end';
         break;
+      case 'start':
+      case 'flex-start':
+      default :
+        break;
     }
+
+    css['align-items'] = 'stretch';         // default cross axis
+    css['align-content'] = 'stretch';       // default cross axis
+
     // Cross-axis
     switch (cross_axis) {
       case 'start':
+      case 'flex-start':
         css['align-items'] = css['align-content'] = 'flex-start';
         break;
       case 'baseline':
@@ -172,8 +180,10 @@ export class LayoutAlignDirective extends BaseFxDirective implements OnInit, OnC
         css['align-items'] = css['align-content'] = 'center';
         break;
       case 'end':
+      case 'flex-end':
         css['align-items'] = css['align-content'] = 'flex-end';
         break;
+      case 'stretch':
       default : // 'stretch'
         break;
     }

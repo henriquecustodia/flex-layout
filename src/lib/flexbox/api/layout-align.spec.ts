@@ -82,6 +82,11 @@ describe('layout-align directive', () => {
             extendObject({'justify-content': 'flex-start'}, CROSSAXIS_DEFAULTS)
         );
       });
+      it('should add correct styles for `fxLayoutAlign="flex-start"` usage', () => {
+        expectDOMFrom(`<div fxLayoutAlign="flex-start"></div>`).toHaveCssStyle(
+            extendObject({'justify-content': 'flex-start'}, CROSSAXIS_DEFAULTS)
+        );
+      });
       it('should add correct styles for `fxLayoutAlign="center"` usage', () => {
         expectDOMFrom(`<div fxLayoutAlign="center"></div>`).toHaveCssStyle(
             extendObject({'justify-content': 'center'}, CROSSAXIS_DEFAULTS)
@@ -99,6 +104,11 @@ describe('layout-align directive', () => {
       });
       it('should add correct styles for `fxLayoutAlign="end"` usage', () => {
         expectDOMFrom(`<div fxLayoutAlign="end"></div>`).toHaveCssStyle(
+            extendObject({'justify-content': 'flex-end'}, CROSSAXIS_DEFAULTS)
+        );
+      });
+      it('should add correct styles for `fxLayoutAlign="flex-end"` usage', () => {
+        expectDOMFrom(`<div fxLayoutAlign="flex-end"></div>`).toHaveCssStyle(
             extendObject({'justify-content': 'flex-end'}, CROSSAXIS_DEFAULTS)
         );
       });
@@ -121,6 +131,7 @@ describe('layout-align directive', () => {
       it('should add correct styles for `fxLayoutAlign="start baseline"` usage', () => {
         expectDOMFrom(`<div fxLayoutAlign="start baseline"></div>`).toHaveCssStyle(
             extendObject(MAINAXIS_DEFAULTS, {
+              'justify-content': 'flex-start',
               'align-items': 'baseline',
               'align-content': 'stretch'
             })
